@@ -1,26 +1,264 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  margin: 0;
+  background: #030305;
+  color: white;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.birthday {
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 20%, #211044 0%, transparent 35%),
+    #030305;
+}
+
+.screen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.intro h1,
+.reveal h1,
+.hero h1 {
+  font-size: clamp(4rem, 12vw, 9rem);
+  line-height: 0.9;
+  margin: 20px 0;
+  font-weight: 900;
+  letter-spacing: -6px;
+  background: linear-gradient(135deg, white, #a78bfa);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.intro h1 {
+  font-size: clamp(4rem, 10vw, 7rem);
+}
+
+.small-title {
+  color: #8d8d9d;
+  font-size: 12px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  color: #858591;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+button {
+  margin-top: 30px;
+  border: 0;
+  padding: 16px 30px;
+  border-radius: 50px;
+  background: white;
+  color: black;
+  font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.25);
+}
+
+.gift-icon {
+  font-size: 80px;
+  margin-bottom: 20px;
+}
+
+.cake {
+  font-size: 100px;
+}
+
+.balloons {
+  position: absolute;
+  top: 30px;
+  font-size: 50px;
+  white-space: nowrap;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.stars span {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: white;
+  animation: twinkle 3s infinite;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.1;
+    transform: scale(0.5);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 30px;
+}
+
+.hero p {
+  color: #858591;
+  font-size: 21px;
+  line-height: 2;
+}
+
+.heart {
+  font-size: 100px;
+}
+
+.message {
+  min-height: 80vh;
+  max-width: 850px;
+  margin: auto;
+  padding: 120px 30px;
+  text-align: center;
+}
+
+.message h2,
+.memories h2,
+.final h2 {
+  font-size: clamp(3rem, 7vw, 6rem);
+  margin: 20px 0 50px;
+  font-weight: 900;
+}
+
+.message p {
+  color: #858591;
+  font-size: 20px;
+  line-height: 2;
+  margin: 25px 0;
+}
+
+.message strong {
+  color: white;
+}
+
+.signature {
+  margin-top: 60px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.memories {
+  max-width: 1100px;
+  margin: auto;
+  padding: 120px 25px;
+  text-align: center;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  margin-top: 60px;
+}
+
+.photo {
+  position: relative;
+  overflow: hidden;
+  border-radius: 25px;
+  background: #111;
+  border: 1px solid #222;
+}
+
+.photo img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.photo div {
+  padding: 20px;
+  text-align: left;
+  color: #bbb;
+}
+
+.final {
+  min-height: 100vh;
+  padding: 100px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.final p {
+  color: #858591;
+  font-size: 21px;
+  line-height: 2;
+}
+
+.final h3 {
+  margin-top: 50px;
+  font-size: 30px;
+}
+
+.big-heart {
+  font-size: 100px;
+}
+
+@media (max-width: 700px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .intro h1,
+  .reveal h1,
+  .hero h1 {
+    letter-spacing: -3px;
+  }
+
+  .balloons {
+    font-size: 30px;
+  }
 }
